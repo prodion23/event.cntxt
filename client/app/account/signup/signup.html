@@ -2,78 +2,42 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-12 centered-terms">
       <h1>Sign up</h1>
     </div>
-    <div class="col-sm-12">
-      <form class="form" name="form" ng-submit="signupCtrl.register(form)" novalidate>
+    <div class="col-sm-3">
+    </div>
+    <div class="col-sm-6">
 
-        <div class="form-group" ng-class="{ 'has-success': form.name.$valid && signupCtrl.submitted,
-                                            'has-error': form.name.$invalid && signupCtrl.submitted }">
-          <label>Name</label>
 
-          <input type="text" name="name" class="form-control" ng-model="signupCtrl.user.name"
-                 required/>
-          <p class="help-block" ng-show="form.name.$error.required && signupCtrl.submitted">
-            A name is required
-          </p>
-        </div>
+        <form name ="userForm">
+          <div layout-gt-md="row">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Email</label>
+              <input type="email">
+            </md-input-container>
+          </div>
+          <div layout-gt-md="row">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Password</label>
+              <input>
+            </md-input-container>
+          </div>
+          <div layout-gt-md="row">
+            <md-input-container class="md-block" flex-gt-sm>
+              <label>Password Confirm</label>
+              <input>
+            </md-input-container>
+          </div>
+        </form>
 
-        <div class="form-group" ng-class="{ 'has-success': form.email.$valid && signupCtrl.submitted,
-                                            'has-error': form.email.$invalid && signupCtrl.submitted }">
-          <label>Email</label>
+      <div layout="row" layout-align="center center">
+      <md-button class="md-primary md-raised form-submit-button">Sign Up</md-button>
+    </div>
 
-          <input type="email" name="email" class="form-control" ng-model="signupCtrl.user.email"
-                 required
-                 sql-error/>
-          <p class="help-block" ng-show="form.email.$error.email && signupCtrl.submitted">
-            Doesn't look like a valid email.
-          </p>
-          <p class="help-block" ng-show="form.email.$error.required && signupCtrl.submitted">
-            What's your email address?
-          </p>
-          <p class="help-block" ng-show="form.email.$error.sql">
-            {{ errors.email }}
-          </p>
-        </div>
-
-        <div class="form-group" ng-class="{ 'has-success': form.password.$valid && signupCtrl.submitted,
-                                            'has-error': form.password.$invalid && signupCtrl.submitted }">
-          <label>Password</label>
-
-          <input type="password" name="password" class="form-control" ng-model="signupCtrl.user.password"
-                 ng-minlength="3"
-                 required
-                 sql-error/>
-          <p class="help-block"
-             ng-show="(form.password.$error.minlength || form.password.$error.required) && signupCtrl.submitted">
-            Password must be at least 3 characters.
-          </p>
-          <p class="help-block" ng-show="form.password.$error.sql">
-            {{ errors.password }}
-          </p>
-        </div>
-
-        <div>
-          <button class="btn btn-inverse btn-lg btn-login" type="submit">
-            Sign up
-          </button>
-          <a class="btn btn-default btn-lg btn-register" href="/login">
-            Login
-          </a>
-        </div>
-
-        <hr>
-        <div>
-          <a class="btn btn-facebook" href="" ng-click="signupCtrl.loginOauth('facebook')">
-            <i class="fa fa-facebook"></i> Connect with Facebook
-          </a>
-          <a class="btn btn-google-plus" href="" ng-click="signupCtrl.loginOauth('google')">
-            <i class="fa fa-google-plus"></i> Connect with Google+
-          </a>
-        </div>
-      </form>
+    </div>
+    <div class="col-sm-3">
     </div>
   </div>
-  <hr>
+    <p class="centered-terms">Already a member?  Sign in&nbsp<a ui-sref="login">here</a>.</p>
 </div>
