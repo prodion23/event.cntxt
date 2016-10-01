@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('app.signup')
-  .controller('SignupCtrl',['Auth', '$location', '$window', SignupCtrl]);
+  .controller('SignupCtrl',['$location', '$state','firebaseService', SignupCtrl]);
 
-  function SignupCtrl(Auth, $location, $window){
+  function SignupCtrl($location, $state, firebaseService){
       var vm = this;
       vm.user = {};
       vm.errors = {};
@@ -14,25 +14,15 @@ angular.module('app.signup')
       function register(form){
           vm.submitted = true;
           if(form.$valid) {
-            Auth.createUser({
-              name: vm.user.name,
-              email: vm.user.email,
-              password: vm.user.password
-            })
-            .then( function() {
-              // Account created, redirect to home
-              $location.path('/');
-            })
-            .catch( function(err) {
-              err = err.data;
-              vm.errors = {};
+           firebaseService.auth().createUserWithEmailAndPassword(vm.user.email, vm.user.password).catch(function(error) {
+          		  var errorCode = error.code;
+          		  var errorMessage = error.message;
+          	});
 
-              // Update validity of form fields that match the sql errors
-              angular.forEach(err.errors, function(error, field) {
-                form[field].$setValidity('sql', false);
-                vm.errors[field] = error.message;
-              });
-            });
+          	var user = firebaseService.auth().currentUser;
+          	if(user){
+          	  $state.go('dashboard');
+          	}
           }
       }
 
