@@ -1,23 +1,25 @@
 'use strict';
 
 angular.module('angularAppTemplateApp')
-  .controller('NavbarCtrl', function ($scope, $location, Auth) {
-    $scope.menu = [{
-      'title': 'Home',
-      'link': '/'
-    }];
+  .controller('NavbarCtrl', ['$location', 'Auth', NavbarCtrl]);
+  
+  function NavbarCtrl($location, Auth){
+      var vm = this;
+      vm.menu = [];
 
-    $scope.isCollapsed = true;
-    $scope.isLoggedIn = Auth.isLoggedIn;
-    $scope.isAdmin = Auth.isAdmin;
-    $scope.getCurrentUser = Auth.getCurrentUser;
+      vm.isCollapsed = true;
+      vm.isLoggedIn = Auth.isLoggedIn;
+      vm.isAdmin = Auth.isAdmin;
+      vm.getCurrentUser = Auth.getCurrentUser;
 
-    $scope.logout = function() {
-      Auth.logout();
-      $location.path('/login');
-    };
+      vm.logout = logout;
+      vm.isActive = isActive;
 
-    $scope.isActive = function(route) {
-      return route === $location.path();
-    };
-  });
+      function logout(){
+          Auth.logout();
+          $location.path('/login');
+      }
+      function isActive(route){
+          return route === $location.path();
+      }
+  }
