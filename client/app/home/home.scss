@@ -1,7 +1,6 @@
-.thing-form {
-    margin: 20px 0;
-}
+body{
 
+}
 *{
   font-family: 'Roboto', sans-serif;
 }
@@ -20,6 +19,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 .icon{
   color: $primaryAccentPurple;
@@ -31,11 +31,28 @@
     text-align: center;
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
     background: $secondaryAccentOrange;
+    margin-bottom: 40px;
+}
+.features{
+  margin-bottom: 40px;
 }
 
+.how-it-works{
+  position: relative;
+  padding: 30px 15px;
+  color:white;
+  background:$primaryAccentPurple;
+  border-bottom: none;
+  width: 100% !important;
+  margin: 0px !important;
+}
 .footer {
     text-align: center;
     padding: 30px 0;
     margin-top: 70px;
     border-top: 1px solid #E5E5E5;
+}
+ol li{
+  padding-top: 15px;
+  font-size: 16px;
 }
