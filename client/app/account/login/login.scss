@@ -23,3 +23,20 @@ $btnGithubBackgroundHighlight:      #ccc;
 .btn-github {
   @include button-variant($btnTextAlt, $btnGithubBackground, $btnGithubBackgroundHighlight);
 }
+md-input-container:not(.md-input-invalid).md-input-focused .md-input {
+    border-color: $secondaryAccentOrange;
+}
+md-input-container:not(.md-input-invalid).md-input-focused label {
+    color: $secondaryAccentOrange;
+}
+.md-primary{
+  color: $secondaryAccentOrange;
+}
+
+.centered-terms{
+  display: flex;
+  flex-directon: row;
+  justify-content: center;
+  margin-top: 30px;
+
+}

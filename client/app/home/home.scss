@@ -2,6 +2,10 @@
     margin: 20px 0;
 }
 
+*{
+  font-family: 'Roboto', sans-serif;
+}
+
 #banner {
     border-bottom: none;
     margin-top: -20px;
@@ -12,7 +16,14 @@
     line-height: 1;
     letter-spacing: -1px;
 }
-
+.centerBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.icon{
+  color: $primaryAccentPurple;
+}
 .hero-unit {
     position: relative;
     padding: 30px 15px;
