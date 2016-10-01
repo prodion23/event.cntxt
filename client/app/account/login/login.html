@@ -8,25 +8,24 @@
     <div class="col-sm-3">
     </div>
     <div class="col-sm-6">
-
-
-        <form name ="userForm">
+        <form name="userForm" ng-submit="loginCtrl.login(userForm)">
           <div layout-gt-md="row">
             <md-input-container class="md-block" flex-gt-sm>
               <label>Email</label>
-              <input type="email">
+              <input type="email" ng-model="loginCtrl.user.email">
             </md-input-container>
           </div>
           <div layout-gt-md="row">
             <md-input-container class="md-block" flex-gt-sm>
               <label>Password</label>
-              <input>
+              <input type="password" ng-model="loginCtrl.user.password">
             </md-input-container>
           </div>
-        </form>
-      
+
+
       <div layout="row" layout-align="center center">
-      <md-button class="md-primary md-raised form-submit-button">Login</md-button>
+      <md-button type="submit" class="md-primary md-raised form-submit-button">Login</md-button>
+      </form>
     </div>
 
     </div>
