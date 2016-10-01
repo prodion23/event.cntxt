@@ -11,18 +11,18 @@
     </div>
     <div collapse="isCollapsed" class="navbar-collapse collapse" id="navbar-main">
       <ul class="nav navbar-nav">
-        <li ng-repeat="item in navbarCtrl.menu" ng-class="{active: navbarCtrl.isActive(item.link)}">
+        <li ng-repeat="item in navbarCtrl.menu" ng-class="{active: $state.includes('item.link')}">
             <a ng-href="{{item.link}}">{{item.title}}</a>
         </li>
-        <li ng-show="navbarCtrl.isAdmin()" ng-class="{active: navbarCtrl.isActive('/admin')}"><a href="/admin">Admin</a></li>
+        <li ng-show="navbarCtrl.isAdmin()" ng-class="{active: $state.includes('admin')}"><a href="/admin">Admin</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li ng-hide="navbarCtrl.isLoggedIn()" ng-class="{active: navbarCtrl.isActive('/signup')}"><a href="/signup">Sign up</a></li>
-        <li ng-hide="navbarCtrl.isLoggedIn()" ng-class="{active: navbarCtrl.isActive('/login')}"><a href="/login">Login</a></li>
-        <li ng-show="navbarCtrl.isLoggedIn()"><p class="navbar-text">Hello {{ navbarCtrl.getCurrentUser().name }}</p> </li>
-        <li ng-show="navbarCtrl.isLoggedIn()" ng-class="{active: navbarCtrl.isActive('/settings')}"><a href="/settings"><span class="glyphicon glyphicon-cog"></span></a></li>
-        <li ng-show="navbarCtrl.isLoggedIn()" ng-class="{active: navbarCtrl.isActive('/logout')}"><a href="" ng-click="navbarCtrl.logout()">Logout</a></li>
+        <li ng-hide="navbarCtrl.isLoggedIn" ng-class="{active: $state.includes('signup')}"><a href="/signup">Sign up</a></li>
+        <li ng-hide="navbarCtrl.isLoggedIn" ng-class="{active: $state.includes('login')}"><a href="/login">Login</a></li>
+        <li ng-show="navbarCtrl.isLoggedIn"><p class="navbar-text">Hello {{ navbarCtrl.email }}</p> </li>
+        <li ng-show="navbarCtrl.isLoggedIn" ng-class="{active: $state.includes('settings')}"><a href="/settings"><span class="glyphicon glyphicon-cog"></span></a></li>
+        <li ng-show="navbarCtrl.isLoggedIn" ng-class="{active: $state.includes('logout')}"><a href="" ng-click="navbarCtrl.logout()">Logout</a></li>
       </ul>
     </div>
   </div>
