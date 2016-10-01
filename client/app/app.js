@@ -10,7 +10,8 @@ angular.module('angularAppTemplateApp', [
   'app.settings',
   'app.signup',
   'app.admin',
-  'app.home'
+  'app.home',
+  'app.dashboard'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
