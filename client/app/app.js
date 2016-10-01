@@ -2,6 +2,8 @@
 
 angular.module('angularAppTemplateApp', [
   'ngCookies',
+  'firebase',
+  'app.firebase',
   'ngResource',
   'ngSanitize',
   'ui.router',
