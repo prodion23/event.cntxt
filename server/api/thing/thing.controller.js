@@ -17,14 +17,14 @@ function Thing(req){
 
 // Get list of things
 exports.index = function(req, res) {
-  Thing(req)
+  /*Thing(req)
     .findAll()
     .then(function (things) {
       return res.status(200).json(things);
     })
     .catch(function (err){
       if(err) { return handleError(res, err); }
-    });
+    });*/
 };
 
 // Get a single thing

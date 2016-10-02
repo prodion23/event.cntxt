@@ -5,9 +5,15 @@ angular.module('app.dashboard')
 function EventCtrl($stateParams, firebaseService, $scope, $uibModal){
     var vm = this;
     vm.sites = [];
+    vm.checkIns = [];
+    vm.checkInCount = 0;
     vm.eventKey = $stateParams.eventId;
     vm.openAddSiteModal = openAddSiteModal;
     vm.getEventSites = getEventSites;
+    vm.getCheckInCount = getCheckInCount;
+    vm.getTimes = getTimes;
+    vm.earlyTime = "02 10 2016, 00:00";
+    vm.latestTime = "02 10 2016, 13:23";
 
     firebaseService.database().ref('events/' + vm.eventKey).on('value', function(data){
          var event = data.val();
@@ -16,6 +22,30 @@ function EventCtrl($stateParams, firebaseService, $scope, $uibModal){
          vm.eventLocation = event.address;
          vm.eventDateTime = event.datetime;
     });
+
+    function getCheckInCount() {
+      firebaseService.database().ref('checkIns').orderByChild("event").startAt(vm.eventKey).endAt(vm.eventKey).on('child_added', function(data){
+                var checkIn = data.val();
+                vm.checkInCount++;
+                $scope.$apply();
+      });
+
+    }
+
+    function getTimes() {
+        console.log("CHECKING TIMES");
+      firebaseService.database().ref('checkIns').orderByChild("event").startAt(vm.eventKey).endAt(vm.eventKey).limitToFirst(1).on('child_added', function(data){
+                var checkIn = data.val();
+                vm.earlyTime = checkIn.time;
+      });
+
+      firebaseService.database().ref('checkIns').orderByChild("event").limitToLast(1).on('child_added', function(data){
+                var checkIn = data.val();
+                vm.earlyTime = checkIn.time;
+                $scope.$apply();
+      });
+
+    }
 
     function openAddSiteModal() {
        var modalInstance = $uibModal.open({
@@ -39,6 +69,8 @@ function EventCtrl($stateParams, firebaseService, $scope, $uibModal){
     firebaseService.auth().onAuthStateChanged(function(user) {
         if (user) {
             getEventSites();
+            getCheckInCount();
+            getTimes();
 
         } else {
 
