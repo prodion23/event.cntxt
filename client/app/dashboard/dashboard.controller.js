@@ -1,11 +1,11 @@
 'use strict'
 angular.module('app.dashboard')
-.controller('DashboardCtrl', ['$http', '$uibModal', DashboardCtrl]);
+.controller('DashboardCtrl', ['$http', '$uibModal','firebaseService', '$scope',DashboardCtrl]);
 
-function DashboardCtrl($http, $uibModal){
+function DashboardCtrl($http, $uibModal, firebaseService, $scope){
     var vm = this;
     vm.openAddEventModal = openAddEventModal;
-
+    vm.events = [];
 
     function openAddEventModal() {
       var modalInstance = $uibModal.open({
@@ -15,4 +15,23 @@ function DashboardCtrl($http, $uibModal){
                   controllerAs: 'addEventModalCtrl'
        });
     }
+
+    function getUserEvents(){
+        var userId = firebaseService.auth().currentUser.uid;
+        firebaseService.database().ref('events').orderByChild('creator').startAt(userId).endAt(userId).on('child_added', function(data){
+            vm.events.push(data.val());
+            console.log(data.val());
+            console.log('a');
+            $scope.$apply();
+        });
+    }
+
+    firebaseService.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            console.log(user.uid);
+            getUserEvents();
+        } else {
+          // No user is signed in.
+        }
+      });
 }
