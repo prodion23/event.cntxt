@@ -3,23 +3,34 @@
     <h3 class="modal-title">
       Create New Event
     </h3>
-    <div class="modal-body">
-      <form name="newEvent">
-        Name
-        <input type="text" ng-model="addEventModalCtrl.event.name" placeholder="Event Name">
-        Date
-        <input type="datetime-local" ng-model="addEventModalCtrl.event.datetime">
+  </div>
 
-        <h3>Check-in Beacon</h3>
-        <select ng-model="addEventModalCtrl.event.beacon" style="width: 100%">
-          <option value="sampleBeacon">Sample Beacon Minor: 59F2SGR4903R</option>
-        </select>
+    <div class="modal-body">
+      <form name ="newEvent" ng-submit="addEventModalCtrl.addEvent()">
+        <div layout-gt-md="row" class="eventField">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Event Name</label>
+            <input type="text" ng-model="addEventModalCtrl.event.name" required>
+          </md-input-container>
+        </div>
+        <div layout-gt-md="row" class="eventField">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Date</label>
+            <input type="datetime-local" ng-model="addEventModalCtrl.event.datetime" required>
+          </md-input-container>
+        </div>
+
+        <md-select ng-model="addEventModalCtrl.event.beacon">
+            <md-option ng-value="None">Check-in Beacon</md-option>
+            <md-option ng-repeat="beacon in addEventModalCtrl.beacons" ng-value="beacon">
+              {{beacon}}
+            </md-option>
+          </md-select>
+          <div class="controls" layout="row" layout-align="end">
+            <md-button type="submit" class="md-primary md-raised form-submit-button">Create Event</md-button>
+          </div>
       </form>
     </div>
-    <br>
 
-    <div class="controls">
-      <button class="btn btn-primary" type="button" ng-click="addEventModalCtrl.addEvent()">Create Event</button>
-    </div>
+
   </div>
-</div>
