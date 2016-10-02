@@ -32,14 +32,14 @@ function EventCtrl($stateParams, firebaseService, $scope, $uibModal){
             console.log("SITE: ", site);
             site.key = data.key;
             vm.sites.push(site);
+              $scope.$apply();
         });
     }
 
     firebaseService.auth().onAuthStateChanged(function(user) {
         if (user) {
             getEventSites();
-            getUserBeacons();
-            $scope.$apply();
+
         } else {
 
         }

@@ -1,24 +1,51 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
-<h2>{{eventCtrl.eventName}}</h2>
-<h3>{{eventCtrl.eventDateTime | amDateFormat: 'dddd, MMMM do YYYY, h:mm a'}}</h3>
-<h3>{{eventCtrl.eventLocation}}</h3>
-
-<h2>Guests can register for your event at:</h2>
-<p>http://localhost:9000/user-registration/{{eventCtrl.eventKey}}</p>
-
-<button ng-click="eventCtrl.openAddSiteModal()">Add Site</button>
-
-<div class="col-sm-4"  ng-repeat="site in eventCtrl.sites track by $index">
-  <div class="siteCard">
+<div class="col-sm-8">
+  <div class="eventCard">
     <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" class="no-margin" md-theme-watch>
-      <span class="md-headline">{{site.name}}</span>
+      <span class="md-headline eventTitle">{{eventCtrl.eventName}}</span>
       <md-card-title>
         <md-card-title-text>
 
+          <span class="md-datetime"><i class="fa fa-calendar fa-1.5x"></i>&nbsp{{eventCtrl.eventDateTime | amDateFormat: 'dddd, MMMM do YYYY, h:mm a'}}</span>
+          <span class="md-address"> <i class="fa fa-map-marker fa-1.5x"></i>&nbsp{{eventCtrl.eventLocation}}</span>
+          <span class="md-register"> <i class="fa fa-sign-in fa-1.5x"></i> Guests can register for your event at:&nbsp<a href="http://localhost:9000/user-registration/{{eventCtrl.eventKey}}">http://localhost:9000/user-registration/{{eventCtrl.eventKey}}</a></span>
+        </md-card-title-text>
+      </md-card-title>
+    </md-card>
+  </div>
+</div>
+<div class="col-sm-4">
+  <div class="eventStatsCard">
+    <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" class="no-margin" md-theme-watch>
+      <span class="md-headline eventTitle">Quick Stats</span>
+      <md-card-title>
+        <md-card-title-text>
+
+          <span class="md-totalCheckIn"><i class="fa fa-check fa-1.5x"></i>&nbsp **###** people have checked into your event. </span>
+          <span class="md-timeCheckIn"> <i class="fa fa-clock-o fa-1.5x"></i>&nbsp The earliest check-in time was **##:##**, and the latest was **##:##**.</span>
+        </md-card-title-text>
+      </md-card-title>
+    </md-card>
+  </div>
+</div>
+
+<div class="col-sm-6"  ng-repeat="site in eventCtrl.sites track by $index">
+  <div class="siteCard">
+    <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" class="no-margin" md-theme-watch>
+      <span class="md-headline">{{site.name}} Stats</span>
+      <md-card-title>
+        <md-card-title-text>
           <span class="md-address"> <i class="fa fa-map-marker fa-1.5x"></i>&nbsp{{site.location}}</span>
         </md-card-title-text>
       </md-card-title>
     </md-card>
+  </div>
+</div>
+
+<div class="col-sm-6">
+  <div class="addNewSiteCard" ng-click="eventCtrl.openAddSiteModal()">
+          <i class="fa fa-plus fa-5x newEvent"></i>
+          <h3 class="newEvent">Add New Site</h3>
   </div>
 </div>
