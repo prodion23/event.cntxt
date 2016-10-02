@@ -1,11 +1,30 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
 
-<button ng-click="dashboardCtrl.openAddEventModal()">AddEvent</button>
+<button ng-click="dashboardCtrl.openAddEventModal()">Add Event</button>
 <button ng-click="dashboardCtrl.openAddBeaconModal()">Add Beacon</button>
 
-<h1>events</h1>
-<div ng-repeat="event in dashboardCtrl.events track by $index">
-    <p> {{event.name}} </p>
+<h1 class="eventDivider">My Events</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4"  ng-repeat="event in dashboardCtrl.events track by $index">
+      <div class="eventCard">
+        <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" class="no-margin" md-theme-watch>
+          <span class="md-headline">{{event.name}}</span>
+          <md-card-title>
+            <md-card-title-text>
+
+              <span class="md-datetime"><i class="fa fa-calendar fa-1.5x"></i>&nbsp{{event.datetime | amDateFormat: 'dddd, MMMM do YYYY, h:mm a'}}</span>
+              <span class="md-address"> <i class="fa fa-map-marker fa-1.5x"></i>&nbsp{{event.address}}</span>
+            </md-card-title-text>
+          </md-card-title>
+          <md-card-actions layout="row" layout-align="end center">
+            <md-button>Add Beacons</md-button>
+            <md-button>Add Sites</md-button>
+          </md-card-actions>
+        </md-card>
+      </div>
+    </div>
+  </div>
 </div>
 <div ui-view></div>

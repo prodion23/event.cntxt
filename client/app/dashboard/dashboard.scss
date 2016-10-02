@@ -1,0 +1,38 @@
+.eventCard{
+  background: f00;
+}
+
+.md-headline{
+  //position: relative;
+
+  padding: 7px 7px;
+  color:white;
+  background:$secondaryAccentOrange;
+  border-bottom: none;
+  width: 100% !important;
+  font-size:20px;
+  margin-bottom: 7px;
+}
+.no-margin{
+  padding: 0px !important;
+}
+.md-address{
+  color: gray;
+  font-size: 15px;
+
+}
+.md-datetime{
+  color: black;
+  font-size: 16px;
+}
+.eventDivider{
+  //position: relative;
+  padding: 15px 15px;
+  color:white;
+  background:$primaryAccentPurple;
+  border-bottom: none;
+  width: 100% !important;
+  //margin: 0px !important;
+  font-size:20px;
+  margin-bottom: 20px;
+}

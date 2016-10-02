@@ -2,6 +2,7 @@
 
 angular.module('angularAppTemplateApp', [
   'ngCookies',
+  'angularMoment',
   'ngMaterial',
   'firebase',
   'app.firebase',
