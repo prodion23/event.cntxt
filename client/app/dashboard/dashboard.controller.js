@@ -22,7 +22,8 @@ function DashboardCtrl($http, $uibModal, firebaseService, $scope){
       var modalInstance = $uibModal.open({
                   templateUrl: '/app/dashboard/addBeaconModal.html',
                   backdrop: 'false',
-                  controllerAs: 'addBeaconModalCtrl'
+                  controllerAs: 'addBeaconModalCtrl',
+                  windowClass: 'zindex'
        });
     }
 
