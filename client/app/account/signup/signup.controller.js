@@ -13,18 +13,22 @@ angular.module('app.signup')
 
       function register(form){
           vm.submitted = true;
-          if(form.$valid) {
+          console.log('form', form.$valid);
+          if(form.$valid && vm.user.password === vm.user.passwordConfirm) {
            firebaseService.auth().createUserWithEmailAndPassword(vm.user.email, vm.user.password).catch(function(error) {
           		  var errorCode = error.code;
           		  var errorMessage = error.message;
           	});
+        }
+    }
 
-          	var user = firebaseService.auth().currentUser;
-          	if(user){
-          	  $state.go('dashboard');
-          	}
+      firebaseService.auth().onAuthStateChanged(function(user) {
+          if (user) {
+              $state.go('dashboard');
+          } else {
+            // No user is signed in.
           }
-      }
+        });
 
       function loginOauth(provider){
            $window.location.href = '/auth/' + provider;
