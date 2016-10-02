@@ -21,7 +21,6 @@ function DashboardCtrl($http, $uibModal, firebaseService, $scope){
     function openAddBeaconModal() {
       var modalInstance = $uibModal.open({
                   templateUrl: '/app/dashboard/addBeaconModal.html',
-                  controller: 'AddBeaconController',
                   backdrop: 'false',
                   controllerAs: 'addBeaconModalCtrl'
        });
@@ -30,17 +29,15 @@ function DashboardCtrl($http, $uibModal, firebaseService, $scope){
     function getUserEvents(){
         var userId = firebaseService.auth().currentUser.uid;
         firebaseService.database().ref('events').orderByChild('creator').startAt(userId).endAt(userId).on('child_added', function(data){
-            vm.beacons.push(data.val());
-            $scope.$apply();
+            vm.events.push(data.val());
+
         });
     }
 
     function getUserBeacons(){
         var userId = firebaseService.auth().currentUser.uid;
         firebaseService.database().ref('beacons').orderByChild('creator').startAt(userId).endAt(userId).on('child_added', function(data){
-            vm.events.push(data.val());
-            console.log(data.val());
-            $scope.$apply();
+            vm.beacons.push(data.val());
         });
     }
 
@@ -48,6 +45,7 @@ function DashboardCtrl($http, $uibModal, firebaseService, $scope){
         if (user) {
             getUserEvents();
             getUserBeacons();
+            $scope.$apply();
         } else {
 
         }

@@ -22,8 +22,8 @@
 
         <md-select ng-model="addEventModalCtrl.event.beacon">
             <md-option ng-value="None">Check-in Beacon</md-option>
-            <md-option ng-repeat="beacon in addEventModalCtrl.beacons" ng-value="beacon">
-              {{beacon}}
+            <md-option ng-repeat="beacon in addEventModalCtrl.beacons" ng-value="beacon.key">
+              {{beacon.name}}
             </md-option>
           </md-select>
           <div class="controls" layout="row" layout-align="end">
