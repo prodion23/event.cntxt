@@ -21,14 +21,14 @@ angular.module('app.login')
         		});
                 var user = firebaseService.auth().currentUser;
                 if(user){
-                    $state.go('dashboard');
+                    $state.go('dashboard.events');
                 }
             }
         }
 
         firebaseService.auth().onAuthStateChanged(function(user) {
             if (user) {
-                $state.go('dashboard');
+                $state.go('dashboard.events');
             } else {
               // No user is signed in.
             }

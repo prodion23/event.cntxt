@@ -18,14 +18,13 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-left">
-        <li ng-show="navbarCtrl.isDashboard"><a ui-sref="dashboard.events">My Events</a></li>
-        <li ng-show="navbarCtrl.isDashboard"><a ui-sref="dashboard.beacons">My Beacons</a></li>
+        <li ng-show="navbarCtrl.isLoggedIn"><a ui-sref="dashboard.events">My Events</a></li>
+        <li ng-show="navbarCtrl.isLoggedIn"><a ui-sref="dashboard.beacons">My Beacons</a></li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
         <li ng-hide="navbarCtrl.isLoggedIn" ng-class="{active: $state.includes('signup')}"><a href="/signup">Sign up</a></li>
         <li ng-hide="navbarCtrl.isLoggedIn" ng-class="{active: $state.includes('login')}"><a href="/login">Login</a></li>
-        <li ng-show="navbarCtrl.isLoggedIn"><a style="padding-top: 2px" ui-sref="dashboard">My Dashboard</a></li>
         <li ng-show="navbarCtrl.isLoggedIn"><p style="padding-top: 2px" class="navbar-text">Hello {{ navbarCtrl.email }}</p> </li>
         <li ng-show="navbarCtrl.isLoggedIn" ng-class="{active: $state.includes('logout')}"><a href="" ng-click="navbarCtrl.logout()">Logout</a></li>
       </ul>

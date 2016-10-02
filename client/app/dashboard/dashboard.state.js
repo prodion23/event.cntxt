@@ -20,4 +20,10 @@ angular.module('app.dashboard')
           controller: 'DashboardCtrl',
           controllerAs: 'dashboardCtrl'
     })
+    .state('event', {
+      url: "/event/:eventId",
+      templateUrl: '/app/dashboard/event.html',
+      controller: 'EventCtrl',
+      controllerAs: 'eventCtrl'
+    })
 })

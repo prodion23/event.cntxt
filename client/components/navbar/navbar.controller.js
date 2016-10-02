@@ -9,7 +9,7 @@ angular.module('angularAppTemplateApp')
 
       vm.isCollapsed = true;
 
-      if($state.current.url === "/dashboard") {
+      if($state.current.url.indexOf("/dashboard") !== -1) {
         vm.isDashboard = true;
       } else {
         vm.isDashboard = false;

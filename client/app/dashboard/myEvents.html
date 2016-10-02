@@ -1,3 +1,4 @@
+<title>Events</title>
 <div class="col-sm-4">
   <div class="addNewEventCard" ng-click="dashboardCtrl.openAddEventModal()">
           <i class="fa fa-plus fa-5x newEvent"></i>
@@ -16,7 +17,7 @@
         </md-card-title-text>
       </md-card-title>
       <md-card-actions layout="row" layout-align="end center">
-        <md-button>Add Beacons</md-button>
+        <a ui-sref="event({eventId: event.key})"><md-button>View Details</md-button></a>
         <md-button>Add Sites</md-button>
       </md-card-actions>
     </md-card>
