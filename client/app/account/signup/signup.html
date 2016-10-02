@@ -10,29 +10,32 @@
     <div class="col-sm-6">
 
 
-        <form name ="userForm">
+        <form name ="userForm" ng-submit="signupCtrl.register(userForm)">
           <div layout-gt-md="row">
             <md-input-container class="md-block" flex-gt-sm>
               <label>Email</label>
-              <input type="email">
+              <input ng-model="signupCtrl.user.email" type="email">
             </md-input-container>
           </div>
           <div layout-gt-md="row">
             <md-input-container class="md-block" flex-gt-sm>
               <label>Password</label>
-              <input>
+              <input type="password" ng-model="signupCtrl.user.password">
             </md-input-container>
           </div>
           <div layout-gt-md="row">
             <md-input-container class="md-block" flex-gt-sm>
               <label>Password Confirm</label>
-              <input>
+              <input  type="password" ng-model="signupCtrl.user.passwordConfirm">
             </md-input-container>
           </div>
+
+          <div layout="row" layout-align="center center">
+          <md-button type="submit" class="md-primary md-raised form-submit-button">Sign Up</md-button>
+      </div>
         </form>
 
-      <div layout="row" layout-align="center center">
-      <md-button class="md-primary md-raised form-submit-button">Sign Up</md-button>
+
     </div>
 
     </div>
