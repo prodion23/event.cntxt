@@ -10,13 +10,13 @@ angular.module('app.dashboard')
     })
     .state('dashboard.events',{
           url: '/dashboard/events',
-          template: '<h1>Events</h1>',
+          templateUrl: '/app/dashboard/myEvents.html',
           controller: 'DashboardCtrl',
           controllerAs: 'dashboardCtrl'
     })
     .state('dashboard.beacons',{
           url: '/dashboard/beacons',
-          template: '<h1>Beacons</h1>',
+          templateUrl: '/app/dashboard/myBeacons.html',
           controller: 'DashboardCtrl',
           controllerAs: 'dashboardCtrl'
     })
