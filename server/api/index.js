@@ -5,10 +5,10 @@ var path      = require("path");
 var Sequelize = require("sequelize");
 var env       = process.env.NODE_ENV || "development";
 var config    = require('../config/environment');
-var sequelize = new Sequelize(process.env.DATABASE_NAME, process.env.DATABASE_USER, process.env.DATABASE_PASSWORD, config.sql);
+//var sequelize = new Sequelize(process.env.DATABASE_NAME, process.env.DATABASE_USER, process.env.DATABASE_PASSWORD, config.sql);
 var db        = {};
 
-fs
+/*fs
   .readdirSync(__dirname)
   .filter(function(file) {
     return (file.indexOf(".") !== 0) && (file !== "index.js");
@@ -27,5 +27,5 @@ Object.keys(db).forEach(function(modelName) {
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
-
+*/
 module.exports = db;
