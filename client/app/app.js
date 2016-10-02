@@ -15,7 +15,8 @@ angular.module('angularAppTemplateApp', [
   'app.signup',
   'app.admin',
   'app.home',
-  'app.dashboard'
+  'app.dashboard',
+  'app.user-registration'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, $mdThemingProvider) {
     $urlRouterProvider
