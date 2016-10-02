@@ -24,7 +24,7 @@ angular.module('app.signup')
 
       firebaseService.auth().onAuthStateChanged(function(user) {
           if (user) {
-              $state.go('dashboard');
+              $state.go('dashboard.events');
           } else {
             // No user is signed in.
           }

@@ -1,4 +1,24 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
 <h2>{{eventCtrl.eventName}}</h2>
-<h3>{{eventCtrl.eventDateTime}}</h3>
+<h3>{{eventCtrl.eventDateTime | amDateFormat: 'dddd, MMMM do YYYY, h:mm a'}}</h3>
+<h3>{{eventCtrl.eventLocation}}</h3>
+
+<h2>Guests can register for your event at:</h2>
+<p>http://localhost:9000/user-registration/{{eventCtrl.eventKey}}</p>
+
+<button ng-click="eventCtrl.openAddSiteModal()">Add Site</button>
+
+<div class="col-sm-4"  ng-repeat="site in eventCtrl.sites track by $index">
+  <div class="siteCard">
+    <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" class="no-margin" md-theme-watch>
+      <span class="md-headline">{{site.name}}</span>
+      <md-card-title>
+        <md-card-title-text>
+
+          <span class="md-address"> <i class="fa fa-map-marker fa-1.5x"></i>&nbsp{{site.location}}</span>
+        </md-card-title-text>
+      </md-card-title>
+    </md-card>
+  </div>
+</div>
