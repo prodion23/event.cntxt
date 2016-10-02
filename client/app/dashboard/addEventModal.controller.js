@@ -6,7 +6,7 @@ function AddEventController($http, $uibModal, $uibModalInstance, firebaseService
     var vm = this;
     vm.event = {};
     vm.addEvent = addEvent;
-
+    vm.beacons = ['beacon1', 'beacon2', 'beacon3'];
     console.log("USER ", firebaseService.auth().currentUser);
 
     function addEvent() {
