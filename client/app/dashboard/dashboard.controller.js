@@ -29,7 +29,9 @@ function DashboardCtrl($http, $uibModal, firebaseService, $scope){
     function getUserEvents(){
         var userId = firebaseService.auth().currentUser.uid;
         firebaseService.database().ref('events').orderByChild('creator').startAt(userId).endAt(userId).on('child_added', function(data){
-            vm.events.push(data.val());
+            var event = data.val();
+            event.key = data.key;
+            vm.events.push(event);
         });
     }
 

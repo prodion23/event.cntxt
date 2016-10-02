@@ -1,17 +1,13 @@
 'use strict';
 
 angular.module('angularAppTemplateApp')
-  .controller('NavbarCtrl', ['$state', 'Auth', 'firebaseService', NavbarCtrl]);
+  .controller('NavbarCtrl', ['$state', 'firebaseService','$scope',NavbarCtrl]);
 
-  function NavbarCtrl($state, Auth, firebaseService){
+  function NavbarCtrl($state, firebaseService, $scope){
       var vm = this;
       vm.menu = [];
 
       vm.isCollapsed = true;
-      vm.isAdmin = Auth.isAdmin;
-      vm.currentUser = firebaseService.auth().currentUser;
-
-      console.log("CURRENT USER: ", vm.currentUser);
 
       if($state.current.url === "/dashboard") {
         vm.isDashboard = true;
@@ -25,7 +21,7 @@ angular.module('angularAppTemplateApp')
         vm.isLoggedIn = false;
       else {
         vm.isLoggedIn = true;
-        vm.email = vm.currentUser.email;
+
         }
 
       vm.logout = logout;
@@ -38,4 +34,16 @@ angular.module('angularAppTemplateApp')
             console.log("ERROR LOGGING OUT");
           });
       }
+
+      firebaseService.auth().onAuthStateChanged(function(user) {
+          if (user) {
+             vm.isLoggedIn = true;
+             vm.email = user.email;
+              $scope.$apply();
+          } else {
+            vm.isLoggedIn = false;
+          }
+
+        });
+
   }
