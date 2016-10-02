@@ -1,6 +1,6 @@
 'use strict'
 angular.module('app.dashboard')
-.controller('DashboardCtrl', ['$http', '$uibModal','firebaseService', '$scope',DashboardCtrl]);
+.controller('DashboardCtrl', ['$http', '$uibModal','firebaseService', '$scope', DashboardCtrl]);
 
 function DashboardCtrl($http, $uibModal, firebaseService, $scope){
     var vm = this;
@@ -23,14 +23,12 @@ function DashboardCtrl($http, $uibModal, firebaseService, $scope){
           //data.val().eventtime = moment().format(data.val().eventtime);
             vm.events.push(data.val());
             console.log(data.val());
-            console.log('a');
             $scope.$apply();
         });
     }
 
     firebaseService.auth().onAuthStateChanged(function(user) {
         if (user) {
-            console.log(user.uid);
             getUserEvents();
         } else {
           // No user is signed in.
