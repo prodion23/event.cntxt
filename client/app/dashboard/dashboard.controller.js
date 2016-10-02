@@ -1,6 +1,6 @@
 'use strict'
 angular.module('app.dashboard')
-.controller('DashboardCtrl', ['$http', '$uibModal','firebaseService', '$scope',DashboardCtrl]);
+.controller('DashboardCtrl', ['$http', '$uibModal','firebaseService', '$scope', DashboardCtrl]);
 
 function DashboardCtrl($http, $uibModal, firebaseService, $scope){
     var vm = this;
@@ -30,7 +30,6 @@ function DashboardCtrl($http, $uibModal, firebaseService, $scope){
         var userId = firebaseService.auth().currentUser.uid;
         firebaseService.database().ref('events').orderByChild('creator').startAt(userId).endAt(userId).on('child_added', function(data){
             vm.events.push(data.val());
-
         });
     }
 
@@ -38,6 +37,7 @@ function DashboardCtrl($http, $uibModal, firebaseService, $scope){
         var userId = firebaseService.auth().currentUser.uid;
         firebaseService.database().ref('beacons').orderByChild('creator').startAt(userId).endAt(userId).on('child_added', function(data){
             vm.beacons.push(data.val());
+            $scope.$apply();
         });
     }
 

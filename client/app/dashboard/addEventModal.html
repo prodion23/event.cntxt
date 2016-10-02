@@ -15,6 +15,12 @@
         </div>
         <div layout-gt-md="row" class="eventField">
           <md-input-container class="md-block" flex-gt-sm>
+            <label>Event Address</label>
+            <input type="text" ng-model="addEventModalCtrl.event.address" required>
+          </md-input-container>
+        </div>
+        <div layout-gt-md="row" class="eventField">
+          <md-input-container class="md-block" flex-gt-sm>
             <label>Date</label>
             <input type="datetime-local" ng-model="addEventModalCtrl.event.datetime" required>
           </md-input-container>

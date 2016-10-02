@@ -13,6 +13,7 @@ function AddEventController($http, $uibModal, $uibModalInstance, firebaseService
 
       firebaseService.database().ref('events/').push({
           name: vm.event.name,
+          address: vm.event.address,
           datetime: vm.event.datetime.toString(),
           beacon: vm.event.beacon,
           creator : firebaseService.auth().currentUser.uid
