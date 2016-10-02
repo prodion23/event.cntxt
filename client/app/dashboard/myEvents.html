@@ -1,4 +1,9 @@
-<button ng-click="dashboardCtrl.openAddEventModal()">Add Event</button>
+<div class="col-sm-4">
+  <div class="addNewEventCard" ng-click="dashboardCtrl.openAddEventModal()">
+          <i class="fa fa-plus fa-5x newEvent"></i>
+          <h3 class="newEvent">Add New Event</h3>
+  </div>
+</div>
 <div class="col-sm-4"  ng-repeat="event in dashboardCtrl.events track by $index">
   <div class="eventCard">
     <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" class="no-margin" md-theme-watch>
