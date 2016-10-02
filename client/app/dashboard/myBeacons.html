@@ -1,1 +1,23 @@
-
+<md-toolbar layout="row" >
+  <div class="md-toolbar-tools">
+    <span>My Beacons</span>
+      <span class="fa fa-plus plusSign" ng-click="dashboardCtrl.openAddBeaconModal()"></span>
+  </div>
+</md-toolbar>
+<div class="col-sm-12 col-no-padding"  ng-repeat="beacon in dashboardCtrl.beacons track by $index">
+  <div >
+    <md-content>
+      <md-list flex>
+        <md-list-item ng-click="null">
+          <img ng-src="assets/images/beacon.png" width=30px height=40px/>
+          <div class="md-list-item-text" layout="column">
+            <p class="beaconName">{{ beacon.name}}</p>
+            <p class="beaconUUID">{{ beacon.uuid }}</p>
+          </div>
+        </md-list-item>
+        <md-divider ></md-divider>
+      </md-list>
+    </md-content>
+  </div>
+</div>
+</div>
