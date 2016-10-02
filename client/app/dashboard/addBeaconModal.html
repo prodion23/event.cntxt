@@ -1,0 +1,24 @@
+<div class="source-list-modal">
+  <div class="modal-header">
+    <h3 class="modal-title">
+      Add New Beacon
+    </h3>
+    <div class="modal-body">
+      <form name="newBeacon">
+        Name
+        <input type="text" ng-model="addBeaconModalCtrl.beacon.name" placeholder="Beacon Nickname">
+        UUID
+        <input type="text" ng-model="addBeaconModalCtrl.beacon.uuid">
+        Major
+        <input type="text" ng-model="addBeaconModalCtrl.beacon.major">
+        Minor
+        <input type="text" ng-model="addBeaconModalCtrl.beacon.minor">
+      </form>
+    </div>
+    <br>
+
+    <div class="controls">
+      <button class="btn btn-primary" type="button" ng-click="addBeaconModalCtrl.addBeacon()">Add Beacon</button>
+    </div>
+  </div>
+</div>

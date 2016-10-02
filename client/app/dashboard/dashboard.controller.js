@@ -6,12 +6,13 @@ function DashboardCtrl($http, $uibModal, firebaseService, $scope){
     var vm = this;
     vm.openAddEventModal = openAddEventModal;
     vm.events = [];
+    vm.openAddBeaconModal = openAddBeaconModal;
 
     function openAddEventModal() {
       var modalInstance = $uibModal.open({
                   templateUrl: '/app/dashboard/addEventModal.html',
                   controller: 'AddEventController',
-                  backdrop: 'true',
+                  backdrop: 'false',
                   controllerAs: 'addEventModalCtrl'
        });
     }
@@ -34,4 +35,12 @@ function DashboardCtrl($http, $uibModal, firebaseService, $scope){
           // No user is signed in.
         }
       });
+    function openAddBeaconModal() {
+      var modalInstance = $uibModal.open({
+                  templateUrl: '/app/dashboard/addBeaconModal.html',
+                  controller: 'AddBeaconController',
+                  backdrop: 'false',
+                  controllerAs: 'addBeaconModalCtrl'
+       });
+    }
 }
