@@ -26,4 +26,12 @@ angular.module('app.login')
             }
         }
 
+        firebaseService.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                $state.go('dashboard');
+            } else {
+              // No user is signed in.
+            }
+          });
+
     }
