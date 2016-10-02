@@ -3,22 +3,38 @@
     <h3 class="modal-title">
       Add New Beacon
     </h3>
-    <div class="modal-body">
+      </div>
+    <div class="modal-body" ng-submit="addBeaconModalCtrl.addBeacon()">
       <form name="newBeacon">
-        Name
-        <input type="text" ng-model="addBeaconModalCtrl.beacon.name" placeholder="Beacon Nickname">
-        UUID
-        <input type="text" ng-model="addBeaconModalCtrl.beacon.uuid">
-        Major
-        <input type="text" ng-model="addBeaconModalCtrl.beacon.major">
-        Minor
-        <input type="text" ng-model="addBeaconModalCtrl.beacon.minor">
+        <div layout-gt-md="row" class="eventField">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Beacon Name</label>
+            <input type="text" ng-model="addBeaconModalCtrl.beacon.name" required>
+          </md-input-container>
+        </div>
+        <div layout-gt-md="row" class="eventField">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>UUID</label>
+            <input type="text" ng-model="addBeaconModalCtrl.beacon.uuid" required>
+          </md-input-container>
+        </div>
+        <div layout-gt-md="row" class="eventField">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Major</label>
+            <input type="text" ng-model="addBeaconModalCtrl.beacon.major" required>
+          </md-input-container>
+        </div>
+        <div layout-gt-md="row" class="eventField">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Minor</label>
+            <input type="text" ng-model="addBeaconModalCtrl.beacon.minor" required>
+          </md-input-container>
+        </div>
+        <div class="controls" layout="row" layout-align="end">
+          <md-button type="submit" class="md-primary md-raised form-submit-button">Add Beacon</md-button>
+        </div>
       </form>
-    </div>
-    <br>
 
-    <div class="controls">
-      <button class="btn btn-primary" type="button" ng-click="addBeaconModalCtrl.addBeacon()">Add Beacon</button>
-    </div>
-  </div>
+      </div>
+
 </div>

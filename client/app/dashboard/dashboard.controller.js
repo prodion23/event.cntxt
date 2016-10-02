@@ -20,6 +20,7 @@ function DashboardCtrl($http, $uibModal, firebaseService, $scope){
     function getUserEvents(){
         var userId = firebaseService.auth().currentUser.uid;
         firebaseService.database().ref('events').orderByChild('creator').startAt(userId).endAt(userId).on('child_added', function(data){
+          //data.val().eventtime = moment().format(data.val().eventtime);
             vm.events.push(data.val());
             console.log(data.val());
             console.log('a');
