@@ -1,5 +1,10 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
 
-<button ng-click="dashboardCtrl.openAddEventModal()">Add Event</button>
+<button ng-click="dashboardCtrl.openAddEventModal()">AddEvent</button>
 <button ng-click="dashboardCtrl.openAddBeaconModal()">Add Beacon</button>
+
+<h1>events</h1>
+<div ng-repeat="event in dashboardCtrl.events track by $index">
+    <p> {{event.name}} </p>
+</div>
